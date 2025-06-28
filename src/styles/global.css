@@ -1,1 +1,45 @@
 @import "tailwindcss";
+
+:root {
+    --background-primary: #181928;
+    --background-secondary: #2f3045;
+    --background-tertiary: #3c3a57;
+
+    --text-primary: #c3b0d0;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+    color: var(--text-primary);
+}
+
+/* Tailwind CSS classes */
+
+.bg-primary {
+    background-color: var(--background-primary);
+}
+
+.bg-secondary {
+    background-color: var(--background-secondary);
+}
+
+.bg-tertiary {
+    background-color: var(--background-tertiary);
+}
+
+.text-primary {
+    color: var(--text-primary);
+}
+
+/* Global styles */
+
+.sidebar-expanded nav a:hover {
+    transition: all .3s ease-in-out;
+    background-color: var(--background-tertiary);
+}
+
+.sidebar-collapsed nav a:hover {
+    transition: all .3s ease-in-out;
+    transform: scale(1.1);
+}
