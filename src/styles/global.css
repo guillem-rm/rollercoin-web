@@ -6,6 +6,16 @@
     --background-tertiary: #3c3a57;
 
     --text-primary: #c3b0d0;
+
+    --border-primary: #6a668a;
+
+    --rarity-uncommon: #2bd600;
+    --rarity-rare: #03e1e4;
+    --rarity-epic: #ff2fd1;
+    --rarity-legendary: #ffdc00;
+    --rarity-unreal: #eb0000;
+
+    --price-primary: #03e1e4;
 }
 
 * {
@@ -34,6 +44,30 @@
 
 .text-white {
     color: white;
+}
+
+.text-rarity-uncommon {
+    color: var(--rarity-uncommon);
+}
+.text-rarity-rare {
+    color: var(--rarity-rare);
+}
+.text-rarity-epic {
+    color: var(--rarity-epic);
+}
+.text-rarity-legendary {
+    color: var(--rarity-legendary);
+}
+.text-rarity-unreal {
+    color: var(--rarity-unreal);
+}
+
+.text-price-primary {
+    color: var(--price-primary);
+}
+
+.border-primary {
+    border-color: var(--border-primary);
 }
 
 .border-text-primary {

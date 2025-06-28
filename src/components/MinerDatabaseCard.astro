@@ -1,0 +1,39 @@
+---
+import MainContainer from "./MainContainer.astro";
+import { formatPower } from "../utils/miner";
+
+const { miner, className = "" } = Astro.props;
+
+const minerGifUrl = `${import.meta.env.PUBLIC_API_URL}/media/miner/gif?name=${encodeURIComponent(miner.name)}`;
+const rarityImgUrl = `${import.meta.env.PUBLIC_API_URL}/media/rarity?type=${encodeURIComponent(miner.rarity)}`;
+
+miner.rarity = miner.rarity.charAt(0).toUpperCase() + miner.rarity.slice(1).toLowerCase();
+miner.power = formatPower(miner.power);
+---
+
+<MainContainer className={className}>
+    <div class="p-2 flex gap-2">
+        <div class="w-30 h-24 bg-primary rounded-sm flex items-center justify-center relative leading-[1.1]">
+            {miner.rarity !== "Common" && (
+                <img src={rarityImgUrl} alt={miner.rarity} class="absolute w-6 top-5 left-1" />
+            )}
+            <img src={minerGifUrl} alt={miner.name} />
+        </div>
+        <div class="w-full flex items-center justify-between px-2">
+            <div>
+                <h2 class="text-lg font-bold text-white">
+                    {miner.rarity !== "Common" && miner.rarity !== "Legacy" && (
+                        <span class={`text-rarity-${miner.rarity.toLowerCase()}`}>{miner.rarity}</span>
+                    )}
+                    {miner.name}
+                </h2>
+                <p class="text-white leading-[1.2]">{miner.power}</p>
+                <p class="text-white leading-[1.4]">{miner.bonus}%</p>
+            </div>
+            <div class="text-end">
+                <p class="text-white leading-[1.2]">From</p>
+                <p class="text-price-primary font-bold leading-[1.4]">{miner.price} RLT</p>
+            </div>
+        </div>
+    </div>
+</MainContainer>
