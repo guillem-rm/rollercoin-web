@@ -1,4 +1,6 @@
 ---
+import { Ghost } from 'lucide-astro';
+
 import Layout from '../layouts/Layout.astro';
 import Title from '../components/PageTitle.astro';
 import MainContainer from '../components/MainContainer.astro';
@@ -12,8 +14,11 @@ const miners = await getAllMiners();
 <Layout>
 	<Title title="Database" info="The Database is the place where you can find all miners." />
 	<MainContainer className="mt-4 p-6">
-		{!miners ? (
-			<p class="text-center text-gray-500">No miners found.</p>
+		{!miners || miners.length === 0 ? (
+			<div class="flex gap-2 justify-center items-center flex-col">
+				<Ghost size={48} />
+				<p>No miners found.</p>
+			</div>
 		) : (
 			miners.map(miner => (
 				<MinerDatabaseCard miner={miner} className="mb-4" />
