@@ -34,6 +34,10 @@
 
 /* Global styles */
 
+.sidebar-active * {
+    color: white !important;
+}
+
 .sidebar-expanded nav a:hover {
     transition: all .3s ease-in-out;
     background-color: var(--background-tertiary);

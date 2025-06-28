@@ -1,6 +1,12 @@
 ---
 import "../styles/global.css";
-import { Menu, Database } from "lucide-astro";
+import { Menu, Database, Warehouse } from "lucide-astro";
+
+const currentPath = Astro.url.pathname;
+
+function isActive(path: any) {
+  	return currentPath === path ? "sidebar-active" : "";
+}
 ---
 
 <html lang="en">
@@ -48,10 +54,15 @@ import { Menu, Database } from "lucide-astro";
 			</button>
 
 			<!-- Navigation -->
-			<nav class="flex flex-col gap-6 mt-10 w-full">
-				<a href="/" class="flex items-center gap-3 text-white px-4 py-2 rounded-sm">
+			<nav class="flex flex-col gap-4 mt-10 w-full">
+				<a href="/database" class={`flex items-center gap-3 px-4 py-2 rounded-sm ${isActive("/database")}`}>
 					<Database size={28} />
 					<span class="nav-label hidden">Database</span>
+				</a>
+
+				<a href="/room" class={`flex items-center gap-3 px-4 py-2 rounded-sm ${isActive("/room")}`}>
+					<Warehouse size={28} />
+					<span class="nav-label hidden">Room</span>
 				</a>
 			</nav>
 		</aside>
