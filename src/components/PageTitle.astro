@@ -1,0 +1,64 @@
+---
+const { title, info = "" } = Astro.props;
+---
+
+<style>
+    .tooltip {
+        position: relative;
+        display: inline-block;
+    }
+
+    .tooltip-content {
+        visibility: hidden;
+        background-color: #2f3045;
+        color: #fff;
+        text-align: left;
+        padding: 6px 10px;
+        border-radius: 6px;
+        position: absolute;
+        top: 50%;
+        left: 130%;
+        transform: translateY(-50%);
+        white-space: normal;
+        z-index: 10;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        font-size: 0.875rem;
+        min-width: 300px;
+        word-wrap: break-word;
+        border: 1px solid #c3b0d0;
+    }
+
+    .tooltip:hover .tooltip-content {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    .tooltip-content::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: -10px;
+        transform: translateY(-50%);
+        border-width: 5px;
+        border-style: solid;
+        border-color: transparent #c3b0d0 transparent transparent;
+    }
+</style>
+
+<div class="flex items-center gap-2">
+    <div class="tooltip cursor-default">
+        {info !== "" && (
+            <div
+                class="bg-secondary h-6 w-6 rounded-full flex items-center justify-center border-1 border-text-primary text-white italic font-serif text-xl font-bold"
+                aria-label="Informació"
+            >
+                i
+            </div>
+            <div class="tooltip-content text-start" role="tooltip">
+                {info}
+            </div>
+        )}
+    </div>
+    <h2 class="text-2xl text-white font-bold">{title}</h2>
+</div>

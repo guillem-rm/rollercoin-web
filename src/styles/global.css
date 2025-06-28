@@ -32,6 +32,18 @@
     color: var(--text-primary);
 }
 
+.text-white {
+    color: white;
+}
+
+.border-text-primary {
+    border-color: var(--text-primary);
+}
+
+.font-serif {
+    font-family: serif;
+}
+
 /* Global styles */
 
 .sidebar-active * {
